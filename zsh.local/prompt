@@ -48,13 +48,13 @@ __git_status_prompt() {
     state=""
   elif [[ "$git_status" =~ "$diverged" ]]; then
     prompt_color="${fg_red}"
-    state="${state}${fg_red}↕${fg_reset}"
+    state="${state} ${fg_red}↕${fg_reset}"
   elif [[ "$git_status" =~ "$behind" ]]; then
     prompt_color="${fg_red}"
-    state="${state}${fg_red}↓${fg_reset}"
+    state="${state} ${fg_red}↓${fg_reset}"
   elif [[ "$git_status" =~ "$ahead" ]]; then
     prompt_color="${fg_red}"
-    state="${state}${fg_red}↑${fg_reset}"
+    state="${state} ${fg_red}↑${fg_reset}"
   elif [[ "$git_status" =~ "$changed" ]]; then
     prompt_color="${fg_red}"
     state=""
@@ -112,11 +112,11 @@ __react_prompt() {
       react_version=$(cat "$cache_file")
     else
       if [ -f "$pkg_manifest" ]; then
-        react_version=$(cat "$pkg_manifest" | jq '.version' | sed -E 's/[^0-9.]//g')
+        react_version=$(cat "$pkg_manifest" | fx 'this.version')
       fi
 
       if [ "$react_version" == "" ]; then
-        react_version=$(npm ls react 2> /dev/null | grep react@ | sed -E 's/[^0-9.]//g')
+        react_version=$(npm ls react 2> /dev/null | ag react@ | sed -E 's/[^0-9.]//g')
       fi
 
       echo -n "$react_version" | head -n1 > "$cache_file"

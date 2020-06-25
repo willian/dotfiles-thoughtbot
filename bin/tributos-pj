@@ -1,27 +1,33 @@
 #! /Users/willian/.asdf/shims/ruby
+# frozen_string_literal: true
 
 def calc(salary, fee)
   (salary * (fee / 100.0)).ceil(2)
 end
 
 def format_currency(value)
-  value_str = value.to_s
-  digits = value_str.split(/\./)[0]
-  dec = value_str.split(/\./)[1]
-  digits = digits.reverse.scan(/\d{1,3}/).join('.').reverse
-  "#{digits},#{dec}"
+  digits, dec = value.to_s.split(/\./)
+  formatted_digits = digits.reverse.scan(/\d{1,3}/).join('.').reverse
+  "#{formatted_digits},#{dec}"
 end
 
 salario = ARGV[0].to_f
-federal = format_currency(calc(salario, 10.97))
+aliquota = 11.02
+federal = format_currency(calc(salario, aliquota))
 municipal = format_currency(calc(salario, 0))
-company = ARGV[1] == 'toptal' ? 'TOPTAL' : 'Strategic Alternative Funds Group'
+company = if ARGV[1] == 'toptal'
+            'TOPTAL'
+          elsif ARGV[1] == 'mailcharts'
+            'MailCharts'
+          else
+            'Strategic Alternative Funds Group'
+          end
 description_aux = ARGV[1] == 'toptal' ? ' clientes da' : nil
 
-result = <<-EODESC
-- Desenvolvimento de software por encomenda para#{description_aux} #{company} LLC.
+result = <<~EODESC
+  - Desenvolvimento de software por encomenda para#{description_aux} #{company} LLC.
 
-* Valor aproximado dos Tributos Federais R$ #{federal} (10,97%) e dos Tributos Municipais R$ #{municipal} (0%). Fonte: IBPT e Fecomercio.
+  * Valor aproximado dos Tributos Federais R$ #{federal} (#{format_currency(aliquota)}%) e dos Tributos Municipais R$ #{municipal} (0%). Fonte: IBPT e Fecomercio.
 EODESC
 
 IO.popen('pbcopy', 'w') { |f| f << result }

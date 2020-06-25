@@ -1,5 +1,7 @@
 if [[ -x "$(which colorls)" ]]; then
-  alias ll="colorls -Ala"
+  alias ls="colorls -h --group-directories-first"
+  alias l="colorls --group-directories-first --almost-all"
+  alias ll="colorls --group-directories-first --almost-all --long --all"
 else
   alias ll="ls -FGlahs"
 fi

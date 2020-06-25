@@ -4,10 +4,9 @@ colorls
 debase
 neovim
 rails_best_practices
+rcodetools
 reek
-rubocop-
-rubocop-airbnb
-rubocop-performance
+rubocop-airbnb 3.0.1
 ruby-debug-ide
 solargraph
 tmuxinator
