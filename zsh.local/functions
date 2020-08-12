@@ -53,12 +53,22 @@ function gc {
 
 # Starts or suspends the dev VM
 function vrun {
-  vmrun -T fusion $2 "$HOME/Virtual Machines/$1.vmwarevm/$1.vmx" nogui
+  vmrun -T fusion $2 "$HOME/Virtual Machines.localized/$1.vmwarevm/$1.vmx" nogui
+}
+function vmEnableSharedFolders {
+  vmrun -T fusion enableSharedFolders "$HOME/Virtual Machines.localized/$1.vmwarevm/$1.vmx"
+}
+function vmstart {
+  vrun dev-vm start
+  vmEnableSharedFolders dev-vm
+}
+function vmstop {
+  vrun dev-vm suspend
 }
 function vm {
-  vrun dev-v3 start \
-    && (ssh dev || (sleep 20 && ssh dev)) \
-    && vrun dev-v3 suspend
+  vmstart \
+    && (ssh dev || (sleep 30 && ssh dev) || (sleep 30 && ssh dev) || (sleep 30 && ssh dev) || (sleep 30 && ssh dev) || (sleep 30 && ssh dev)) \
+    && vmstop
 }
 
 function vbvm {
@@ -69,7 +79,7 @@ function vbvm {
 
 function vmware-backup {
   vmware_path=/Library/Preferences/VMware\ Fusion
-  backup_path="$HOME/Virtual Machines"
+  backup_path="$HOME/Virtual Machines.localized"
 
   cp "$vmware_path/vmnet1/dhcpd.conf" "$backup_path/vmnet1-dhcpd.conf" && \
   cp "$vmware_path/vmnet8/dhcpd.conf" "$backup_path/vmnet8-dhcpd.conf"
