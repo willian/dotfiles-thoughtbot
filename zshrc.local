@@ -4,7 +4,12 @@
 [[ -f ~/.zsh.local/prompt ]] && source ~/.zsh.local/prompt
 [[ -f ~/.zsh.local/tmuxinator.zsh ]] && source ~/.zsh.local/tmuxinator.zsh
 
-fpath=(/usr/local/share/zsh-completions $fpath)
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source $(dirname $(gem which colorls))/tab_complete.sh
