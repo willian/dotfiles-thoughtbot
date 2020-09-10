@@ -1,0 +1,12 @@
+name: mailcharts
+root: ~/Projects/MailCharts
+windows:
+  - docker-compose: >
+      cd api &&
+      git co . &&
+      git pull &&
+      dcrun api npm install &&
+      cd ../ &&
+      dc up app watch &&
+      dcstop
+  - console: cd app
