@@ -65,4 +65,4 @@ set-option -ga terminal-overrides ",xterm-256color:Tc"
 set -g default-terminal "tmux-256color"
 set -as terminal-overrides ',xterm*:sitm=\E[3m'
 
-if-shell "test -f /Users/willian/dotfiles-local/TmuxlineSnapshot" "source /Users/willian/dotfiles-local/TmuxlineSnapshot"
+if-shell "test -f /Users/willian/dotfiles-local/TmuxlineSnapshot" "source-file /Users/willian/dotfiles-local/TmuxlineSnapshot"
