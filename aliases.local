@@ -67,4 +67,4 @@ TZ='America/Los_Angeles' date;\
 "
 
 # Linux
-alias dtsync="sudo systemctl stop ntpd.service && sudo ntpdate a.ntp.br && sudo systemctl start ntpd.service"
+alias dtsync="sudo chronyc -a makestep"
