@@ -50,7 +50,7 @@ alias dm="docker-machine"
 alias dc="docker-compose"
 alias dcrun="dc run --rm"
 alias dcstop="dc stop && dc rm -f"
-alias dcrunu="dc run --rm --user=$(id -u)"
+alias dcrunu="dc run --rm --user=$(id -u):$(id -g)"
 
 # Utils
 alias tz="\
