@@ -58,7 +58,9 @@ Plug 'ncm2/ncm2'
 Plug 'ncm2/ncm2-bufword' " completion words from current buffer
 Plug 'ncm2/ncm2-path' " completion words from current path
 Plug 'ncm2/ncm2-tmux' " completions from other tmux panes
-Plug 'jsfaint/gen_tags.vim', { 'do': 'brew install global' } " Async plugin for vim and neovim to ease the use of ctags/gtags
+
+let g:global_install = 'brew && brew install global || sudo apt install -y global'
+Plug 'jsfaint/gen_tags.vim', { 'do': g:global_install } " Async plugin for vim and neovim to ease the use of ctags/gtags
 Plug 'ncm2/ncm2-tern',  { 'do': 'npm install' } " ternjs based javascript completion for ncm2
 Plug 'ncm2/ncm2-ultisnips' " UltiSnips integration for ncm2
 
