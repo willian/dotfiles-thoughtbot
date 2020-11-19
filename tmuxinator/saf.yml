@@ -1,6 +1,5 @@
 name: saf
 root: ~/Projects/SAF/saf
-pre_window: export SAF_NPM_TOKEN={value}
 windows:
   - docker-compose: dc up api ops web && dcstop
   - console:
