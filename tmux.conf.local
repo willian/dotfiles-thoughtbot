@@ -67,3 +67,11 @@ set -as terminal-overrides ',xterm*:sitm=\E[3m'
 
 if-shell "test -f /home/willian/dotfiles-local/TmuxlineSnapshot" "source-file /home/willian/dotfiles-local/TmuxlineSnapshot"
 if-shell "test -f /Users/willian/dotfiles-local/TmuxlineSnapshot" "source-file /Users/willian/dotfiles-local/TmuxlineSnapshot"
+
+# Enable mouse manipulation
+set -g mouse on
+
+
+# Fig Tmux Integration: Enabled
+source-file ~/.fig/tmux
+# End of Fig Tmux Integration

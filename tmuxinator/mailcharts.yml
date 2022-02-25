@@ -1,12 +1,21 @@
 name: mailcharts
-root: ~/Projects/MailCharts
+root: ~/Code/MailCharts
+on_project_stop: dcstop
+startup_pane: 4
 windows:
-  - docker-compose: >
-      cd api &&
-      git co . &&
-      git pull &&
-      dcrun api npm install &&
-      cd ../ &&
-      dc up app watch &&
-      dcstop
-  - console: cd app
+  - main:
+      layout: tiled
+      panes:
+        - databases:
+          - dc up
+        - api:
+          - cd api
+          - git pull
+          - npm start
+        - admin:
+          - cd admin
+          - git pull
+          - npm start
+        - console:
+          -
+
