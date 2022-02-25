@@ -43,7 +43,8 @@ Plug 'sunaku/vim-ruby-minitest'
 " Visual
 " Plug 'jonathanfilip/vim-lucius'
 " Plug 'joshdick/onedark.vim'
-Plug 'haishanh/night-owl.vim' " Theme
+Plug 'haishanh/night-owl.vim' " Theme (dark)
+Plug 'harmenjanssen/light-owl.vim' "Theme (light)
 Plug 'Yggdroot/indentLine'
 
 " Statusline

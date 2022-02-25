@@ -24,8 +24,9 @@ if (has("termguicolors"))
 endif
 
 syntax on
-set background=dark
-colorscheme night-owl
+" set background=dark
+" colorscheme night-owl
+colorscheme lightowl
 filetype plugin indent on
 
 autocmd Syntax css syn sync minlines=50
@@ -38,6 +39,6 @@ highlight htmlArg gui=italic cterm=italic
 highlight Type gui=italic cterm=italic
 highlight Constant gui=italic cterm=italic
 highlight jsStorageClass gui=italic cterm=italic
-highlight ColorColumn guibg=#112630 ctermbg=235 gui=NONE cterm=NONE
+" highlight ColorColumn guibg=#112630 ctermbg=235 gui=NONE cterm=NONE
 
 let g:indentLine_char = '│'
