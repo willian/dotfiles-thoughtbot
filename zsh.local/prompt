@@ -137,9 +137,15 @@ __blocks_prompt() {
   echo $blocks
 }
 
+__in_nix_shell_prompt() {
+  if [[ "$IN_NIX_SHELL" != "" ]]; then
+    echo "${fg_green}(nix)${fg_reset} "
+  fi
+}
+
 __current_path_prompt() {
   current_path="${PWD/#$HOME/~}"
-  echo "in ${fg_blue}${current_path}${fg_reset}"
+  echo "in $(__in_nix_shell_prompt)${fg_blue}${current_path}${fg_reset}"
 }
 
 precmd () {
