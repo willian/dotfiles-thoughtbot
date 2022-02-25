@@ -13,6 +13,19 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f /usr/local/share/zsh/site-functions/aws_zsh_completer.sh ] && source /usr/local/share/zsh/site-functions/aws_zsh_completer.sh
+[ -f ~/.config/nix-shell/nix-shell.plugin.zsh ] && source ~/.config/nix-shell/nix-shell.plugin.zsh
 source $(dirname $(gem which colorls))/tab_complete.sh
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+#### FIG ENV VARIABLES ####
+# Please make sure this block is at the end of this file.
+[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
+#### END FIG ENV VARIABLES ####
+
+# Nix
+if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi
+# End Nix
+
