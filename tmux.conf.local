@@ -56,6 +56,8 @@ bind-key -r > resize-pane -R 3
 bind-key -r + resize-pane -U 1
 bind-key -r = resize-pane -D 1
 
+# makes Ctrl+k work just like Cmd+k
+bind -n C-k send-keys -R \; send-keys C-l \; clear-history
 
 # fix nvim escape
 set -sg escape-time 0
