@@ -1,5 +1,8 @@
 # Local OSX config
 
+# set status bar to top
+set-option -g status-position top
+
 # reload settings
 bind-key R source-file ~/.tmux.conf
 
@@ -65,8 +68,8 @@ set-option -ga terminal-overrides ",xterm-256color:Tc"
 set -g default-terminal "tmux-256color"
 set -as terminal-overrides ',xterm*:sitm=\E[3m'
 
-if-shell "test -f /home/willian/dotfiles-local/TmuxlineSnapshot" "source-file /home/willian/dotfiles-local/TmuxlineSnapshot"
-if-shell "test -f /Users/willian/dotfiles-local/TmuxlineSnapshot" "source-file /Users/willian/dotfiles-local/TmuxlineSnapshot"
+if-shell "test -f /home/willian/dotfiles-local/tmux.local/tmux_tokyonight_storm.tmux" "source-file /home/willian/dotfiles-local/tmux.local/tmux_tokyonight_storm.tmux"
+if-shell "test -f /Users/willian/dotfiles-local/tmux.local/tmux_tokyonight_storm.tmux" "source-file /Users/willian/dotfiles-local/tmux.local/tmux_tokyonight_storm.tmux"
 
 # Enable mouse manipulation
 set -g mouse on
