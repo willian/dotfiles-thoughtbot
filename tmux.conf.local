@@ -63,11 +63,11 @@ bind -n C-k send-keys -R \; send-keys C-l \; clear-history
 set -sg escape-time 0
 set -g -a terminal-overrides ",screen*:Ss=[%p1%d q:Se=[2 q"
 
-# Add truecolor support
-set-option -ga terminal-overrides ",xterm-256color:Tc"
 # Default terminal is 256 colors
-# set -g default-terminal "screen-256color"
 set -g default-terminal "tmux-256color"
+# Add truecolor support
+set-option -ga terminal-overrides ",xterm-256color:RGB"
+set -ga terminal-overrides ',xterm-256color:Tc'
 set -as terminal-overrides ',xterm*:sitm=\E[3m'
 
 if-shell "test -f /home/willian/dotfiles-local/tmux.local/tmux_tokyonight_storm.tmux" "source-file /home/willian/dotfiles-local/tmux.local/tmux_tokyonight_storm.tmux"
