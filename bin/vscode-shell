@@ -1,0 +1,7 @@
+#!/bin/sh
+# TMUX_SESSION_NAME="vscode`pwd | md5`"
+TMUX_SESSION_WITH_PATHNAME=${PWD##*/}
+FOLDER_NAME=${TMUX_SESSION_WITH_PATHNAME:-/}
+TMUX_SESSION_NAME=${FOLDER_NAME/\./\_}
+tmux attach-session -t $TMUX_SESSION_NAME || tmux new-session -s $TMUX_SESSION_NAME
+
