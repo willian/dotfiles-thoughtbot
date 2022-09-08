@@ -21,12 +21,12 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 echo "Hello $(whoami)! Let's get you set up."
 
-echo "mkdir -p ${HOME}/Code"
-mkdir -p "${HOME}/Code"
+# echo "mkdir -p ${HOME}/Code"
+# mkdir -p "${HOME}/Code"
 
-echo "installing homebrew"
-# install homebrew https://brew.sh
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# echo "installing homebrew"
+# # install homebrew https://brew.sh
+# /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 echo "brew installing stuff"
 # hub: a github-specific version of git
@@ -37,81 +37,81 @@ echo "brew installing stuff"
 # tree: really handy for listing out directories in text
 # bat: A cat(1) clone with syntax highlighting and Git integration.
 # switchaudio-osx: allows me to switch the audio device via the command line
-brew install \
-  awscli \
-  bat \
-  blackhole-2ch \
-  cmake \
-  coreutils \
-  fzf \
-  git \
-  global \
-  gnupg \
-  hub \
-  libpq \
-  luarocks \
-  openssl \
-  openssl@1.1 \
-  readline \
-  sqlite3 \
-  tree \
-  xz \
-  zlib
+# brew install \
+#   awscli \
+#   bat \
+#   blackhole-2ch \
+#   cmake \
+#   coreutils \
+#   fzf \
+#   git \
+#   global \
+#   gnupg \
+#   hub \
+#   libpq \
+#   luarocks \
+#   openssl \
+#   openssl@1.1 \
+#   readline \
+#   sqlite3 \
+#   tree \
+#   xz \
+#   zlib
 
-brew install yarn --without-node
-brew install --HEAD neovim
+# # brew install yarn --without-node
+# brew install --HEAD neovim
 
-echo "installing asdf"
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf
-cd ~/.asdf
-git checkout "$(git describe --abbrev=0 --tags)"
+# echo "installing asdf"
+# git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+# cd ~/.asdf
+# git checkout "$(git describe --abbrev=0 --tags)"
 
-echo "importing NodeJS OpenPGP keys"
-bash -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-previous-release-team-keyring'
+# echo "importing NodeJS OpenPGP keys"
+# bash -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-previous-release-team-keyring'
 
-echo "installing asdf plugins"
-asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
-asdf plugin-add python
-asdf plugin-add yarn https://github.com/twuni/asdf-yarn.git
+# echo "installing asdf plugins"
+# asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+# asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
+# asdf plugin-add python
+# asdf plugin-add yarn https://github.com/twuni/asdf-yarn.git
 
-echo "installs Node, Ruby, Python and Yarn via asdf"
-asdf install
+# echo "installs Node, Ruby, Python and Yarn via asdf"
+# asdf install
 
-echo "installing apps with brew cask"
-brew install --cask \
-  1password \
-  alfred \
-  avibrazil-rdm \
-  brave-browser \
-  dash \
-  discord \
-  dropbox \
-  firefox \
-  google-chrome \
-  obs \
-  rectangle \
-  slack \
-  spotify \
-  suspicious-package \
-  visual-studio-code \
-  vlc \
-  webpquicklook \
-  zoomus \
+# echo "installing apps with brew cask"
+# brew install --cask \
+#   1password \
+#   alfred \
+#   avibrazil-rdm \
+#   brave-browser \
+#   dash \
+#   discord \
+#   dropbox \
+#   firefox \
+#   google-chrome \
+#   obs \
+#   rectangle \
+#   slack \
+#   spotify \
+#   suspicious-package \
+#   visual-studio-code \
+#   vlc \
+#   webpquicklook \
+#   zoomus \
 
-echo "Generating a new SSH key for GitHub"
-ssh-keygen -t ed25519 -C "me@willianfernandes.com" -f ~/.ssh/id_ed25519
-eval "$(ssh-agent -s)"
-touch ~/.ssh/config
-echo "Host *\n AddKeysToAgent yes\n UseKeychain yes\n IdentityFile ~/.ssh/id_ed25519" | tee ~/.ssh/config
-ssh-add -K ~/.ssh/id_ed25519
-echo "run 'pbcopy < ~/.ssh/id_ed25519.pub' and paste that into GitHub"
+# echo "Generating a new SSH key for GitHub"
+# ssh-keygen -t ed25519 -C "me@willianfernandes.com" -f ~/.ssh/id_ed25519
+# eval "$(ssh-agent -s)"
+# touch ~/.ssh/config
+# echo "Host *\n AddKeysToAgent yes\n UseKeychain yes\n IdentityFile ~/.ssh/id_ed25519" | tee ~/.ssh/config
+# ssh-add -K ~/.ssh/id_ed25519
+# echo "run 'pbcopy < ~/.ssh/id_ed25519.pub' and paste that into GitHub"
 
-# get bat and delta all configured
-mkdir -p "${HOME}/.config/bat/themes"
-ln -s "${HOME}/dotfiles/.config/bat/config" "${HOME}/.config/bat/config"
-git clone https://github.com/batpigandme/night-owlish "${HOME}/.config/bat/themes/night-owlish"
-bat cache --build
+# # get bat and delta all configured
+# mkdir -p "${HOME}/.config/bat/themes"
+# ln -s "${HOME}/dotfiles/.config/bat/config" "${HOME}/.config/bat/config"
+# git clone https://github.com/batpigandme/night-owlish "${HOME}/.config/bat/themes/night-owlish"
+# bat cache --build
 
 echo "making system modifications:"
 
@@ -143,7 +143,6 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
 # Remove duplicates in the “Open With” menu (also see `lscleanup` alias)
-/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
 
 # Disable the crash reporter
 defaults write com.apple.CrashReporter DialogType -string "none"
@@ -193,8 +192,8 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Dragging -int 
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 2
 
 # Use scroll gesture with the Ctrl (^) modifier key to zoom
-defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
-defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
+sudo defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
+sudo defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
 
 # Disable press-and-hold for keys in favor of key repeat
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
@@ -328,8 +327,8 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 # Enable highlight hover effect for the grid view of a stack (Dock)
 defaults write com.apple.dock mouse-over-hilite-stack -bool true
 
-# Set the icon size of Dock items to 64 pixels
-defaults write com.apple.dock tilesize -int 64
+# Set the icon size of Dock items to 32 pixels
+defaults write com.apple.dock tilesize -int 32
 
 # Change minimize/maximize window effect
 defaults write com.apple.dock mineffect -string "scale"
@@ -482,8 +481,8 @@ defaults write com.apple.Safari InstallExtensionUpdatesAutomatically -bool true
 ###############################################################################
 
 # Disable send and reply animations in Mail.app
-# defaults write com.apple.mail DisableReplyAnimations -bool true
-# defaults write com.apple.mail DisableSendAnimations -bool true
+defaults write com.apple.mail DisableReplyAnimations -bool true
+defaults write com.apple.mail DisableSendAnimations -bool true
 
 # Copy email addresses as `Foo Bar <foo@example.com>` instead of `foo@example.com` in Mail.app
 defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool true
@@ -506,12 +505,12 @@ defaults write com.apple.mail DraftsViewerAttributes -dict-add "DisplayInThreade
 # Spotlight                                                                   #
 ###############################################################################
 
-# Hide Spotlight tray-icon (and subsequent helper)
-sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
+# # Hide Spotlight tray-icon (and subsequent helper)
+# sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
 # Disable Spotlight indexing for any volume that gets mounted and has not yet
 # been indexed before.
 # Use `sudo mdutil -i off "/Volumes/foo"` to stop indexing any volume.
-sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
+# sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
 # Change indexing order and disable some search results
 # Yosemite-specific search results (remove them if you are using macOS 10.9 or older):
 #   MENU_DEFINITION
@@ -607,7 +606,7 @@ defaults write com.apple.Terminal ShowLineMarks -int 0
 # open "${HOME}/init/Solarized Dark.itermcolors"
 
 # Don’t display the annoying prompt when quitting iTerm
-# defaults write com.googlecode.iterm2 PromptOnQuit -bool false
+defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 
 ###############################################################################
 # Time Machine                                                                #
