@@ -1,1 +1,0 @@
-/Users/willian/.vim/bundle/gocode/nvim/autoload/gocomplete.vim
