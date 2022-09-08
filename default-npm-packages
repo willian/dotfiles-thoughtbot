@@ -3,3 +3,7 @@ fx
 neovim
 serve
 serverless
+typescript
+typescript-language-server
+diagnostic-languageserver
+eslint_d
