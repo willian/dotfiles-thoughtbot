@@ -76,7 +76,4 @@ if-shell "test -f /Users/willian/dotfiles-local/tmux.local/tmux_tokyonight_storm
 # Enable mouse manipulation
 set -g mouse on
 
-
-# Fig Tmux Integration: Enabled
-source-file ~/.fig/tmux
-# End of Fig Tmux Integration
+set-option -g focus-events on
