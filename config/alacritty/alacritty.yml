@@ -3,7 +3,7 @@ env:
   TERM: xterm-256color
 
 window:
-  opacity: 0.9
+  opacity: 1.0
   decorations: buttonless
   dynamic_padding: false
 
@@ -78,9 +78,7 @@ key_bindings:
   - { key: Z, mods: Command, chars: "\x02\x7a" } # Toggle the zoom state of the current tmux pane
 
 schemes:
-  nightfly: &nightfly
-    # Default colors
-    # Default colors
+  nightfly: &nightfly # Default colors
     primary:
       background: "#011627"
       foreground: "#acb4c2"
@@ -117,7 +115,8 @@ schemes:
       magenta: "#ae81ff"
       cyan: "#7fdbca"
       white: "#d6deeb"
-  tokyonight-day: &tokyonight-day # Default colors
+
+  tokyonight_day: &tokyonight_day # Default colors
     primary:
       background: "0xe1e2e7"
       foreground: "0x3760bf"
@@ -147,7 +146,37 @@ schemes:
     indexed_colors:
       - { index: 16, color: "0xb15c00" }
       - { index: 17, color: "0xc64343" }
-  tokyonight-night: &tokyonight-night # Default colors
+  tokyonight_moon: &tokyonight_moon # Default colors
+    primary:
+      background: "0x222436"
+      foreground: "0xc8d3f5"
+
+    # Normal colors
+    normal:
+      black: "0x1b1d2b"
+      red: "0xff757f"
+      green: "0xc3e88d"
+      yellow: "0xffc777"
+      blue: "0x82aaff"
+      magenta: "0xc099ff"
+      cyan: "0x86e1fc"
+      white: "0x828bb8"
+
+    # Bright colors
+    bright:
+      black: "0x444a73"
+      red: "0xff757f"
+      green: "0xc3e88d"
+      yellow: "0xffc777"
+      blue: "0x82aaff"
+      magenta: "0xc099ff"
+      cyan: "0x86e1fc"
+      white: "0xc8d3f5"
+
+    indexed_colors:
+      - { index: 16, color: "0xff966c" }
+      - { index: 17, color: "0xc53b53" }
+  tokyonight_night: &tokyonight_night # Default colors
     primary:
       background: "0x1a1b26"
       foreground: "0xc0caf5"
@@ -177,7 +206,7 @@ schemes:
     indexed_colors:
       - { index: 16, color: "0xff9e64" }
       - { index: 17, color: "0xdb4b4b" }
-  tokyonight-storm: &tokyonight-storm # Default colors
+  tokyonight_storm: &tokyonight_storm # Default colors
     primary:
       background: "0x24283b"
       foreground: "0xc0caf5"
